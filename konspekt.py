@@ -43,14 +43,14 @@ S.rfind(str, [start], [end])'''
 '''Дано рядок символів. Виключити з цього рядка групи символів між дужками [, ]. Самі дужки теж мають бути виключені. Передбачається, що в кожній парі дужок немає інших дужок.'''
 
 # string = 'Виключити з цього [рядка групи] символів, [розташовані між] дужками [, ].'
-## Виключити з цього символів, дужками.
-## 1 ітерація циклу-> Виключити з цього  символів, [розташовані між] дужками [, ].
-## 2 ітерація циклу-> Виключити з цього  символів,  дужками [, ].
-## 3 ітерація циклу-> Виключити з цього  символів,  дужками .
+# # Виключити з цього символів, дужками.
+# # 1 ітерація циклу-> Виключити з цього  символів, [розташовані між] дужками [, ].
+# # 2 ітерація циклу-> Виключити з цього  символів,  дужками [, ].
+# # 3 ітерація циклу-> Виключити з цього  символів,  дужками .
 
 # start_index = string.find('[')
 # end_index = string.find(']')
-#
+
 # new_string = string[:start_index] + string[end_index + 1:]
 # print(new_string)
 
@@ -152,19 +152,19 @@ S.rfind(str, [start], [end])'''
 ----
 Розбираємо URL з Rozetka
 """
-# url_query = 'producer=apple;series=iphone-14-pro;41404=256-gb1261112'
-# query = url_query.split(';')   # розділяємо по ';'
-# print(query)
-# ob_query = {}
-# for element in query:
-#     key, value = element.split('=')
-#     ob_query.update({key: value})
-# print(ob_query)
+url_query = 'producer=apple;series=iphone-14-pro;41404=256-gb1261112'
+query = url_query.split(';')   # розділяємо по ';'
+print(query)
+ob_query = {}
+for element in query:
+    key, value = element.split('=')
+    ob_query.update({key: value})
+print(ob_query)
 
-# result = []
-# for key in ob_query:            # зворотня операція
-#     result.append(key + '=' + ob_query[key])
-# print(';'.join(result))
+result = []
+for key in ob_query:            # зворотня операція
+    result.append(key + '=' + ob_query[key])
+print(';'.join(result))
 
 """
 Методи: split, replace - заміняє 'щось1' на 'щось2'
@@ -295,24 +295,140 @@ S.rfind(str, [start], [end])'''
 Телефон: +380501234567 Де: +380 код країни телефон 501234567
 Вважаємо, що код валідний з кодом і без коду
 """
-phone_storage = ["380669640547", "0637306465 ", " 380961935171", "632643973", "050832520 ",
-                 "000000000", "48730283918", "986223575", "375297947963", "+38(050)123-32-34", "38(050)123 32 34",
-                 "38(050)123 32 3b"]
+# phone_storage = ["380669640547", "0637306465 ", " 380961935171", "632643973", "050832520 ",
+#                  "000000000", "48730283918", "986223575", "375297947963", "+38(050)123-32-34", "38(050)123 32 34",
+#                  "38(050)123 32 3b"]
 
-codes_operators = {"067", "068", "096", "097", "098",
-                   "050", "066", "095", "099", "063", "073", "093"}
+# codes_operators = {"067", "068", "096", "097", "098",
+#                    "050", "066", "095", "099", "063", "073", "093"}
 
-from for_import import sanitize_phone, is_valid_phone
+# from for_import import sanitize_phone, is_valid_phone
 
-if __name__ == "__main__":
-    print('|{:^14}|{:^12}|'.format('Телефон', 'Результат'))
-    print('|{:^14}|{:^12}|'.format('-' * 13 + ':', ':' + '-' * 10 + ':'))
-    for phone in phone_storage:
-        phone = sanitize_phone(phone)
-        if is_valid_phone(phone):
-            print('|{:>14}|{:^12}|'.format(phone, 'valid'))
-        else:
-            print('|{:>14}|{:^12}|'.format(phone, 'not valid'))
+# if __name__ == "__main__":
+#     print('|{:^14}|{:^12}|'.format('Телефон', 'Результат'))
+#     print('|{:^14}|{:^12}|'.format('-' * 13 + ':', ':' + '-' * 10 + ':'))
+#     for phone in phone_storage:
+#         phone = sanitize_phone(phone)
+#         if is_valid_phone(phone):
+#             print('|{:>14}|{:^12}|'.format(phone, 'valid'))
+#         else:
+#             print('|{:>14}|{:^12}|'.format(phone, 'not valid'))
+
+'''
+Метод find 
+'''
+# files = ['video.avi', 'audio.mp3', 'document.doc', 'folder']
+# for file in files:
+#     index = file.find('.')    # знаходимо індекси крапок, якщо не знаходить виводить -1
+#     suffix = file[index + 1:]    # додаємо 1, щоб суфікс був без папки н.п. .avi
+#     print(f'File: {file} Index: {index} Suffix: {suffix}')
+   
+
+## або щоб не виводився -1
+
+# files = ['video.avi', 'audio.mp3', 'document.doc', 'folder']
+# for file in files:
+#     indx = file.find('.')    # знаходимо індекси крапок
+#     if indx != -1:
+#         suffix = file[indx + 1:]    # додаємо 1, щоб суфікс був без папки н.п. .avi
+#         print(f'File: {file} Index: {indx} Suffix: {suffix}')
+#     else: 
+#         print(f'File: {file} Suffix: not found')
+
+## або з методом index який коли не знаходить символ видає Error 
+    
+# files = ['video.avi', 'audio.mp3', 'document.doc', 'folder']
+# for file in files:
+#     try:
+#         indx = file.index('.')    # знаходимо індекси крапок
+#         suffix = file[indx + 1:]    # додаємо 1, щоб суфікс був без папки н.п. .avi
+#         print(f'File: {file} Index: {indx} Suffix: {suffix}')
+#     except ValueError:
+#         print(f'File: {file} Suffix: not found') 
+
+## якщо файл з двома крапками застосовується метод rindex або rfind
+
+# files = ['video.avi', 'audio.mp3', 'document.doc', 'folder', 'backup.tar.gz']
+# for file in files:
+#     try:
+#         indx = file.rindex('.')    # знаходимо індекси крапок
+#         suffix = file[indx + 1:]    # додаємо 1, щоб суфікс був без рапки н.п. .avi
+#         print(f'File: {file} Index: {indx} Suffix: {suffix}')
+#     except ValueError:
+#         print(f'File: {file} Suffix: not found') 
+
+'''
+Метод split 
+'''
+## поділ на частини. маркер поділу пробіли  
+# text = 'First sentance. Second sentance. Thirdsentance'
+# sentances = text.split('.')        
+# print(sentances)      # ['First', 'sentance.', 'Second', 'sentance.', 'Thirdsentance']
+
+## поділ на частини. маркер поділу '.' 
+# text = 'First sentance. Second sentance. Thirdsentance'
+# sentances = text.split('.')        
+# print(sentances)        # ['First sentance', ' Second sentance', ' Thirdsentance']
+
+## поділ на частини. маркер поділу '.' 
+# text = 'First sentance. Second sentance. Thirdsentance'
+# sentances = text.split('.') 
+# print(s)        # ['First sentance', ' Second sentance', ' Thirdsentance']
+
+## поділ на частини, якщо речення поділено різними розділовими знаками
+# import re
+# text = 'First sentance. Second sentance! Thirdsentance?'
+# sentances = re.split('[\.\!\?]', text)  
+# print(sentances)        # ['First sentance', ' Second sentance', ' Thirdsentance', '']
+
+## якщо текст поділений за допомогою \n 
+# text = 'First sentance.\nSecond sentance!\nThirdsentance?'
+
+# print(text)
+# sentances = text.split('\n')  
+# print(sentances) 
+# new_text = ' '.join(sentances)  # join збирає список в строку
+# print(new_text)              # First sentance. Second sentance! Thirdsentance? 
+
+'''
+Метод format 
+'''
+## табличка з числами, числами в квадраті, числами в кубі
+# numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# header = '|{:^15}|{:^15}|{:^15}|'.format('int', 'int^2', 'int^3')
+# separator = '-'*len(header)
+# body = ''
+# for num in numbers:
+#     body += '|{:^15}|{:^15}|{:^15}|\n'.format(num, num**2, num**3)
+# table = '\n'.join([separator, header, separator, body, separator])
+# print(table)
+
+## табличка з числами в десятковому, шістнадцятиричному, вісімковому і двійковому уявленні
+# numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# header = '|{:^15}|{:^15}|{:^15}|{:^15}|'.format('int', 'dex', 'oct', 'bin')
+# separator = '-'*len(header)
+# body = ''
+# for num in numbers:
+#     body += '|{0:^15d}|{0:^15x}|{0:^15o}|{0:^15b}|\n'.format(num)
+# table = '\n'.join([separator, header, separator, body, separator])
+# print(table)
+
+'''
+Метод translate
+'''
+# trans_map = {ord('Я'): 'Ya', ord('н'): 'n', ord('а'): 'a'}  
+# ukr_name = "Яна"
+# last_name = ukr_name.translate(trans_map)
+# print(ukr_name, '=', last_name, sep=' ')    # Яна = Yana
+
+## використання для пошуку в строках
+trans_map = {ord('Я'): 'Ya', ord('н'): 'n', ord('а'): 'a', ord('о'): 'o'}  
+text = "Hello Wоrld"                    # o не латинська а українська
+index = text.find('World')
+new_index = text.translate(trans_map).find('World')
+print(index)                            # -1
+print(new_index)                        # 6
+
 
 
 """
